@@ -7,12 +7,14 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { BuscadorComponent } from './shared/components/buscador/buscador.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewToggleService } from './shared/services/view-toggle.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Api_Rick';
+  loading$ = this.viewToggleService.loading$;
+
+  constructor(private viewToggleService: ViewToggleService) {}
 }

@@ -1,0 +1,15 @@
+.content-wrapper {
+  position: relative;
+  min-height: calc(100vh - 56px); // altura navbar
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
