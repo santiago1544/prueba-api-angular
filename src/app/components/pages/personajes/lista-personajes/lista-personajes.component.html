@@ -1,0 +1,64 @@
+<div class="container">
+  <!-- Contenedor de tabla -->
+  <div class="table-wrapper mat-elevation-z8">
+    <table mat-table [dataSource]="personajes" class="full-width-table">
+
+      <!-- Imagen -->
+      <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef> Imagen </th>
+        <td mat-cell *matCellDef="let personaje">
+          <a [routerLink]="['/detalle_personajes', personaje.id]">
+            <img [src]="personaje.image" [alt]="personaje.name" class="personaje-img"/>
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- Nombre -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let personaje"> 
+          <a [routerLink]="['/detalle_personajes', personaje.id]" class="link-nombre">
+            {{ personaje.name }} 
+          </a>
+        </td>
+      </ng-container>
+
+      <!-- Especie -->
+      <ng-container matColumnDef="especie">
+        <th mat-header-cell *matHeaderCellDef> Especie </th>
+        <td mat-cell *matCellDef="let personaje"> {{ personaje.species }} </td>
+      </ng-container>
+
+      <!-- Estado -->
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let personaje"> {{ personaje.status }} </td>
+      </ng-container>
+
+      <!-- Ubicación -->
+      <ng-container matColumnDef="ubicacion">
+        <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+        <td mat-cell *matCellDef="let personaje"> {{ personaje.location?.name }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <!-- Paginador -->
+  <div class="paginator-wrapper">
+    <mat-paginator 
+      [length]="totalPersonajes"
+      [pageSize]="pageSize"
+      showFirstLastButtons
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </div>
+
+  <div class="container-notFound" *ngIf="personajes.length === 0">
+    <h2>No hay resultados</h2>
+    <br>
+    <button (click)="volver()" class="btn btn-primary">Volver</button>
+  </div>
+</div>
