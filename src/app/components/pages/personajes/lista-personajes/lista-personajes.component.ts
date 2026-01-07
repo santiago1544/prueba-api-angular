@@ -5,6 +5,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 import { Personaje } from '@app/shared/components/interfaces/info_personajes';
 import { PersonajeService } from '@app/shared/services/personaje.service';
+import { ViewToggleService } from '@app/shared/services/view-toggle.service';
 
 @Component({
   selector: 'app-lista-personajes',
@@ -28,6 +29,7 @@ export class ListaPersonajesComponent implements OnInit {
   constructor(
     private personajeService: PersonajeService,
     private route: ActivatedRoute,
+    private viewToggleService: ViewToggleService,
     private location: Location
   ) {}
 
@@ -54,6 +56,7 @@ export class ListaPersonajesComponent implements OnInit {
     this.personajeService.getRandomPersonajes(this.pageSize).subscribe(res => {
       this.personajes = res.personajes;
       this.totalPersonajes = res.total;
+      this.viewToggleService.stopLoading();
     });
   }
 

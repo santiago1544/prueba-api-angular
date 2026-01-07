@@ -5,6 +5,7 @@ import { Pokemon } from '@app/shared/components/interfaces/info_pokemon';
 import { PokemonService } from '@app/shared/services/pokemon.service';
 import { forkJoin } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ViewToggleService } from '@app/shared/services/view-toggle.service';
 
 @Component({
   selector: 'app-lista-pokemones',
@@ -24,6 +25,7 @@ export class ListaPokemonesComponent implements OnInit {
   constructor(
     private pokemonService: PokemonService,
     private location: Location,
+    private viewToggleService: ViewToggleService,
     private route: ActivatedRoute
   ) {}
 
@@ -64,6 +66,7 @@ export class ListaPokemonesComponent implements OnInit {
           weight: p.weight,
           stats: p.stats
         }));
+        this.viewToggleService.stopLoading();
       });
     });
   }
@@ -71,6 +74,7 @@ export class ListaPokemonesComponent implements OnInit {
   buscarPokemon(nombre: string) {
     this.pokemonService.getPokemon(nombre).subscribe((res) => {
       this.pokemones = [res]; // Devuelve un único Pokémon
+      this.viewToggleService.stopLoading();
     });
   }
 
