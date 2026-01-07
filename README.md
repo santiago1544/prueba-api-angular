@@ -1,27 +1,121 @@
-# MiProyecto
+Este proyecto es una aplicación web desarrollada en Angular que consume APIs públicas para mostrar información de:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Personajes de Rick and Morty y de Pokemon
 
-## Development server
+La aplicación permite listar personajes/pokémon con paginación, buscarlos por nombre, ver detalles individuales de cada registro, navegar entre vistas, mostrar datos de forma eficiente y escalable.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+El enfoque principal del proyecto es demostrar buenas prácticas de arquitectura en Angular, separación de responsabilidades, uso correcto de Observables y RxJS, testing unitario.
 
-## Code scaffolding
+Tecnologías Utilizadas para este proyecto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Angular 17.0.0
 
-## Build
+RxJS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Angular Material
 
-## Running unit tests
+TypeScript
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Jasmine & Karma (testing)
 
-## Running end-to-end tests
+APIs públicas
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Rick and Morty API
 
-## Further help
+PokéAPI
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+El proyecto sigue una arquitectura modular y escalable, organizada de la siguiente forma:
+
+src/
+ ├── app/
+ │   ├── personajes/
+ │   │   ├── lista-personajes/
+ │   │   ├── detalle-personajes/
+ │   │   └── personaje.component.ts
+ │   ├── pokemones/
+ │   │   ├── lista-pokemones/
+ │   │   ├── detalle-pokemones/
+ │   │   └── pokemon.component.ts
+ │   ├── shared/
+ │   │   ├── services/
+ │   │   └── interfaces/
+ │   └── app.component.*
+
+Los principios aplicados para esta aplicación son los siguientes:
+
+Separación de responsabilidades
+
+Servicios para lógica de negocio y consumo de APIs
+
+Arquitectura orientada a features
+
+Interfaces compartidas
+
+Componentes pequeños y testeables
+
+Consumo de APIs y RxJS
+Uso de Observables
+
+Los servicios utilizan HttpClient y RxJS para manejar asincronía, encadenar peticiones, controlar errores, optimizar rendimiento
+
+Ejemplo de técnicas usadas:
+
+forkJoin para cargar múltiples recursos en paralelo
+
+take(1) para evitar fugas de memoria
+
+Cache interno en servicios para evitar llamadas innecesarias
+
+En la sección de personajes se simula una paginación local sobre páginas reales de la API, se evita sobrecargar la API, se mantiene compatibilidad con MatPaginator de manera que esto permite controlar pageSize, manejar búsquedas sin romper el paginador, mantener estado consistente.
+
+El proyecto cuenta con pruebas unitarias completas, enfocadas en:
+
+Componentes pequeños, renderizado correcto de datos, uso de ChangeDetectionStrategy.OnPush, componentes de lista, llamadas a servicios, reacción a queryParams, manejo de estados vacíos, componentes de detalle, lectura de parámetros de ruta.
+
+Técnicas de testing aplicadas:
+
+RouterTestingModule
+
+HttpClientTestingModule
+
+fakeAsync + tick() para evitar tests intermitentes
+
+NO_ERRORS_SCHEMA para aislar responsabilidades
+
+Spies (spyOn) para verificar comportamiento sin acoplar tests
+
+Importante:
+El código no fue modificado para que los tests pasen.
+Los tests se adaptaron al comportamiento real del componente, evitando romper funcionalidades como la búsqueda dinámica.
+
+Instrucciones para ejecutar el proyecto
+Instalar dependencias
+npm install
+
+Ejecutar la aplicación
+ng serve
+
+Acceder a:
+
+http://localhost:4200
+
+Ejecutar pruebas unitarias
+ng test
+
+Posibles Mejoras Futuras:
+
+Manejo global de errores (Interceptor HTTP)
+
+Estado global con NgRx o Signals
+
+Mejoras de accesibilidad (ARIA)
+
+Lazy loading por feature
+
+Tests de integración / e2e
+
+Skeleton loaders
+
+Cache persistente (localStorage)
+
+Internacionalización (i18n)

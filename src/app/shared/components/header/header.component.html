@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        Rick y Morty || Poke <span class="text-danger">API</span>
+      </a>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          </li>
+        </ul>
+
+        <!-- Selector de vista -->
+        <div class="me-3">
+          <select class="form-select" (change)="onToggleView($event)">
+            <option value="personajes">Personajes</option>
+            <option value="pokemones">Pokemones</option>
+          </select>
+        </div>
+
+        <!-- Barra de búsqueda -->
+        <div class="col-xs-12 col-sm-12 col-md-6">
+          <app-buscador></app-buscador>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
