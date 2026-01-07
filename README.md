@@ -24,22 +24,7 @@ Rick and Morty API
 
 PokéAPI
 
-El proyecto sigue una arquitectura modular y escalable, organizada de la siguiente forma:
-
-src/
- ├── app/
- │   ├── personajes/
- │   │   ├── lista-personajes/
- │   │   ├── detalle-personajes/
- │   │   └── personaje.component.ts
- │   ├── pokemones/
- │   │   ├── lista-pokemones/
- │   │   ├── detalle-pokemones/
- │   │   └── pokemon.component.ts
- │   ├── shared/
- │   │   ├── services/
- │   │   └── interfaces/
- │   └── app.component.*
+El proyecto sigue una arquitectura modular y escalable.
 
 Los principios aplicados para esta aplicación son los siguientes:
 
